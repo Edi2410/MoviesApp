@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MoviesApp</string>
+    <string name="loading">Loading</string>
+    <string name="splash_screen_meme">Splash screen meme</string>
+    <string name="no_internet">No internet...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_made_by_e_g">App made by E.G.</string>
+    <string name="items">Items</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>
