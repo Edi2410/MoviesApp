@@ -15,10 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoviesApp"
         tools:targetApi="31">
+        <provider
+            android:name=".MoviesContentProvider"
+            android:authorities="com.example.moviesapp.api.provider"
+            android:enabled="true"
+            android:exported="true"></provider>
+<!--        <provider-->
+<!--            android:name=".MoviesProvider"-->
+<!--            android:authorities="com.exemple.moviesapp.api.provider"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="false" />-->
+
         <receiver
             android:name=".MoviesReceiver"
             android:enabled="true"
-            android:exported="false"></receiver>
+            android:exported="false" />
 
         <activity
             android:name=".HostActivity"

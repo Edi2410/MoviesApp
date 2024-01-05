@@ -7,7 +7,7 @@ import androidx.work.WorkerParameters
 class MoviesWorker(private val context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
     override fun doWork(): Result {
-        MoviesFetcher(context).fetchItems(10)
+        MoviesFetcher(context).fetchItems(1)
         return Result.success()
     }
 

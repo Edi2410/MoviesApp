@@ -9,7 +9,7 @@ import hr.algebra.nasaapp.framework.startActivity
 class MoviesReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        //context.setBooleanPreference(DATA_IMPORTED)
+        context.setBooleanPreference(DATA_IMPORTED)
         context.startActivity<HostActivity>()
     }
 }
