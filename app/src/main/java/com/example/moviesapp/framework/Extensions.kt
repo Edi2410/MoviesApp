@@ -12,6 +12,8 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.core.content.getSystemService
 import androidx.preference.PreferenceManager
+import com.example.moviesapp.MOVIES_PROVIDER_CONTENT_URI
+import com.example.moviesapp.api.Item
 
 fun View.applyAnimation(animationId: Int) =
     startAnimation(AnimationUtils.loadAnimation(context, animationId))
@@ -54,4 +56,33 @@ fun Context.isOnline(): Boolean {
         }
     }
     return false
+}
+
+fun Context.fetchItems(): MutableList<Item>{
+    var items = mutableListOf<Item>()
+    val cursor = contentResolver.query(
+        MOVIES_PROVIDER_CONTENT_URI, null, null, null, null
+    )
+
+    while (cursor != null && cursor.moveToNext()){
+        items.add(
+            Item(
+                cursor.getLong(cursor.getColumnIndexOrThrow("id")),
+                cursor.getString(cursor.getColumnIndexOrThrow("title")),
+                cursor.getString(cursor.getColumnIndexOrThrow("overview")),
+                cursor.getString(cursor.getColumnIndexOrThrow("poster_path")),
+                cursor.getString(cursor.getColumnIndexOrThrow("backdrop_path")),
+                cursor.getString(cursor.getColumnIndexOrThrow("release_date")),
+                cursor.getDouble(cursor.getColumnIndexOrThrow("vote_average")),
+                cursor.getInt(cursor.getColumnIndexOrThrow("vote_count")),
+                cursor.getDouble(cursor.getColumnIndexOrThrow("popularity")),
+                cursor.getInt(cursor.getColumnIndexOrThrow("adult")) == 1,
+                cursor.getInt(cursor.getColumnIndexOrThrow("video")) == 1,
+                cursor.getString(cursor.getColumnIndexOrThrow("original_language")),
+                cursor.getString(cursor.getColumnIndexOrThrow("original_title")),
+                cursor.getString(cursor.getColumnIndexOrThrow("genre_ids")).split(",").map { it.toInt() }
+            )
+        )
+    }
+    return items
 }

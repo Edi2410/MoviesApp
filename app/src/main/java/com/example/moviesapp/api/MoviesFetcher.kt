@@ -81,7 +81,7 @@ class MoviesFetcher(private val context: Context) {
                     put(Item::id.name, it.id)
                     put(Item::title.name, it.title)
                     put(Item::overview.name, it.overview)
-                    put(Item::poster_path.name, posterPath?: "")
+                    put(Item::poster_path.name, posterPath ?: "")
                     put(Item::release_date.name, it.release_date)
                     put(Item::vote_average.name, it.vote_average)
                     put(Item::vote_count.name, it.vote_count)
@@ -92,7 +92,6 @@ class MoviesFetcher(private val context: Context) {
                     put(Item::adult.name, it.adult)
                     put(Item::video.name, it.video)
                     put(Item::genre_ids.name, it.genre_ids.joinToString(","))
-
                 }
                 context.contentResolver.insert(
                     MOVIES_PROVIDER_CONTENT_URI,
